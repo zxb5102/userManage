@@ -14,7 +14,7 @@ public interface UserMapper {
 
 	int deleteUserById(@Param("userId") String userId);
 
-	int updateUserById(@Param("userId") String userId, @Param("user") User user);
+	int updateUserById(@Param("user") User user);
 
 	int addNewUser(@Param("user") User user);
 }

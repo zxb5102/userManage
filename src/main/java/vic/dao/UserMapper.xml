@@ -17,10 +17,10 @@
 	</delete>
 
 	<update id="updateUserById">
-		UPDATE users SET name = #{user.name} where id = #{userId}
+		UPDATE users SET name = #{user.userName} where id = #{user.id}
 	</update>
 
 	<insert id="addNewUser">
-		insert into users values (#{user.id},#{user.name})
+		insert into users values (#{user.id},#{user.userName})
 	</insert>
 </mapper>

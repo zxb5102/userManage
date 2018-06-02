@@ -34,15 +34,6 @@ public class UserService {
 		return message;
 	};
 
-	public Message updateUserById(String userId, User user) {
-		int flag = userMapper.updateUserById(userId, user);
-		Message message = new Message();
-		if (flag != 0) {
-			message.setSuccess(true);
-		}
-		return message;
-	};
-
 	public Message addNewUser(User user) {
 		int flag = userMapper.addNewUser(user);
 		Message message = new Message();
@@ -50,5 +41,14 @@ public class UserService {
 			message.setSuccess(true);
 		}
 		return message;
-	};	
+	};
+	
+	public Message updateUserById(User user){
+		int flag = userMapper.updateUserById(user);
+		Message message = new Message();
+		if (flag != 0) {
+			message.setSuccess(true);
+		}
+		return message;
+	}
 }

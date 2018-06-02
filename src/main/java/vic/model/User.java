@@ -5,6 +5,16 @@ public class User {
 	public String id;
 	public String userName;
 
+	public User() {
+		super();
+	}
+
+	public User(String id, String userName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+	}
+
 	public String getId() {
 		return id;
 	}

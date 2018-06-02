@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -15,10 +14,25 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<context:component-scan
-		base-package="vic.controller">
+	<bean id="conversionService"
+		class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="vic.util.UserConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1000000" />
+		<property name="maxInMemorySize" value="100000" />
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+
+	<context:component-scan base-package="vic.controller">
 	</context:component-scan>
-	
+
 	<!-- 返回json数据格式需要这个的支持 配置一些默认的转化器 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 </beans>
