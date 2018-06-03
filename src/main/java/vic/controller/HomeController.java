@@ -19,6 +19,11 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping("/product")
+	public String product(){
+		return "product";
+	}
+	
 	@RequestMapping("/error")
 	public String error() {
 		int i = 1 / 0;
