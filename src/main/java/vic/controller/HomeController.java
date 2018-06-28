@@ -16,6 +16,7 @@ public class HomeController {
 
 	@RequestMapping("/index")
 	public String index() {
+		System.out.println(14);
 		return "index";
 	}
 
